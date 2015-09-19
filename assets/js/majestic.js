@@ -1,6 +1,6 @@
 var Majestic = {
-	baseUrl: "http://richard.dev/majestic-chrome-admin/api.php",
-	// baseUrl: "http://104.236.147.49/majestic-chrome-admin/api.php",
+	// baseUrl: "http://richard.dev/majestic-chrome-admin/api.php",
+	baseUrl: "http://104.236.147.49/majestic-chrome-admin/api.php",
 	
 	defaultItemCount: 5,
 	config: function(apiKey) {

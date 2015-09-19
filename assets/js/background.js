@@ -5,7 +5,8 @@
 			case "majestic-pull":
 				console.log("App is sending request to majestic api server for " + request.item);
 				Majestic.GetAnchorText(request.item, 5, null, function(response) {
-					chrome.tabs.sendMessage(sender.tab.id, {item: request.item, anchorText: response.DataTables.AnchorText});
+					if (response && response.DataTables)
+						chrome.tabs.sendMessage(sender.tab.id, {item: request.item, anchorText: response.DataTables.AnchorText});
 				});
 				// IconosquareBot.start(request.hashtag, request.option, sendResponse);
 				break;
