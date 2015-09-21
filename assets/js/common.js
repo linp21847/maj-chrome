@@ -5,15 +5,39 @@ var SeoWorx = {
 	_links: [],
 
 	getDomain: function() {
-		var hostname = window.location.hostname,
-			self = SeoWorx,
-			segs = hostname.split(".");
+		var hostname = window.location.hostname;
 
-		return segs[segs.length - 2];
+		return hostname;
+	},
+
+	isGoogleSearchPage: function() {
+		var googleSearchPageDomainList = [
+				"www.google.com",
+				"www.google.ca",
+				"www.google.pl", 
+				"www.google.de", 
+				"www.google.ru",
+				"www.google.com.tr",
+				"www.google.com.au",
+				"www.google.com.nz"
+			],
+			hostname = window.location.hostname;
+
+		if (googleSearchPageDomainList.indexOf(hostname) > -1)
+			return true;
+		else {
+			if (hostname.indexOf("www.google.") ===0) {
+				console.log("New google search page was found. It's '" + hostname + "'");
+				return true;
+			} else {
+				return false;
+			}
+
+		}
 	},
 
 	getAnchorElements: function() {
-		if (this.getDomain() === "google") {
+		if (this.isGoogleSearchPage()) {
 			return this.getAnchorElementsInGoogle();
 		}
 
